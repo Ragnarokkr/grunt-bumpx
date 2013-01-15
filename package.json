@@ -1,6 +1,6 @@
 {
-  "name": "grunt-bump",
-  "description": "Bump version number",
+  "name": "grunt-bumpx",
+  "description": "Extended Bump version number",
   "version": "0.1.0",
   "homepage": "https://github.com/Ragnarokkr/grunt-bump",
   "author": {

@@ -1,6 +1,6 @@
-# grunt-bump
+# grunt-bumpx
 
-> Bump version number
+> Bump version number (extended)
 
 ## Getting Started
 _If you haven't used [grunt][] before, be sure to check out the
@@ -10,13 +10,13 @@ From the same directory as your project's [Gruntfile][Getting Started] and
 [package.json][], install this plugin with the following command:
 
 ```bash
-npm install grunt-bump --save-dev
+npm install grunt-bumpx --save-dev
 ```
 
 Once that's done, add this line to your project's Gruntfile:
 
 ```js
-grunt.loadNpmTasks('grunt-bump');
+grunt.loadNpmTasks('grunt-bumpx');
 ```
 
 If the plugin has been installed correctly, running `grunt --help` at the
