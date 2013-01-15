@@ -3,6 +3,17 @@
 var grunt = require('grunt');
 
 exports.bump = {
+  setUp: function(cb){
+    this.defOpts = {
+      fixtures: 'test/fixtures/default_options.json',
+      expected: 'test/expected/default_options.json'
+    },
+    this.custOpts = {
+      fixtures: 'test/fixtures/custom_options.json',
+      expected: 'test/expected/custom_options.json'
+    };
+    cb();
+  },
   default_options: function(test) {
     test.expect(1);
 
