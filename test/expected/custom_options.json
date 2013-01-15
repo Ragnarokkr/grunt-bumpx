@@ -1,0 +1,43 @@
+{
+  "name": "grunt-bump",
+  "description": "Bump package version",
+  "version": "0.2.0",
+  "homepage": "https://github.com/Ragnarokkr/grunt-bump",
+  "author": {
+    "name": "Marco Trulla",
+    "email": "marco@marcotrulla.it",
+    "url": "http://marcotrulla.it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Ragnarokkr/grunt-bump.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ragnarokkr/grunt-bump/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Ragnarokkr/grunt-bump/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.1.1rc5",
+    "grunt-contrib-clean": "~0.4.0rc5",
+    "grunt-contrib-nodeunit": "~0.1.2rc5",
+    "grunt": "~0.4.0rc5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "semver": "~1.1.2"
+  }
+}
