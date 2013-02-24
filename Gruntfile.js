@@ -79,5 +79,4 @@ module.exports = function(grunt) {
       grunt.file.copy( f.src, f.dest );
     });
   });
-
 };
