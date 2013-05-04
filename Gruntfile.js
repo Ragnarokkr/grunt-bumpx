@@ -10,73 +10,80 @@
 
 module.exports = function(grunt) {
 
-  // Project configuration.
-  grunt.initConfig({
-    jshint: {
-      all: [
-        'Gruntfile.js',
-        'tasks/*.js',
-        '<%= nodeunit.tests %>',
-      ],
-      options: {
-        jshintrc: '.jshintrc',
-      },
-    },
+	// Project configuration.
+	grunt.initConfig({
+		// Tasks configuration
+		jshint: {
+			all: [
+				'Gruntfile.js',
+				'tasks/*.js',
+				'<%= nodeunit.tests %>',
+			],
+			options: {
+				jshintrc: '.jshintrc',
+			},
+		},
 
-    clean: {
-      files: [ 'test/fixtures/*_options.json' ]
-    },
+		clean: {
+			files: [ 'test/fixtures/*_options.json' ]
+		},
 
-    restore: {
-      default_options: {
-        src: 'test/fixtures/ref_package.json',
-        dest: 'test/fixtures/default_options.json'
-      },
-      custom_options: {
-        src: 'test/fixtures/ref_package.json',
-        dest: 'test/fixtures/custom_options.json'
-      }
-    },
+		restore: {
+			default_options: {
+				src: 'test/fixtures/ref_package.json',
+				dest: 'test/fixtures/default_options.json'
+			},
+			custom_options: {
+				src: 'test/fixtures/ref_package.json',
+				dest: 'test/fixtures/custom_options.json'
+			}
+		},
 
-    // Configuration to be run (and then tested).
-    bump: {
-      default_options: {
-        options: {},
-        src: ['<%= restore.default_options.dest %>']
-      },
-      custom_options: {
-        options: {
-          part: 'minor'
-        },
-        src: ['<%= restore.custom_options.dest %>']
-      }
-    },
+		// Configuration to be run (and then tested).
+		bump: {
+			default_options: {
+				options: {},
+				src: ['<%= restore.default_options.dest %>']
+			},
+			custom_options: {
+				options: {
+					part: 'minor',
+					tabSize: 2,
+					onBumped: function( data ) {
+						var file = data.task.filesSrc[data.index],
+							json = grunt.file.readJSON( file );
+						grunt.log.writeln( file + ': ' + json.version );
+					}
+				},
+				src: ['<%= restore.custom_options.dest %>']
+			}
+		},
 
-    // Unit tests.
-    nodeunit: {
-      tests: ['test/*_test.js'],
-    }
+		// Unit tests.
+		nodeunit: {
+			tests: ['test/*_test.js'],
+		}
 
-  });
+	});
 
-  // Actually load this plugin's task(s).
-  grunt.loadTasks('tasks');
+	// Actually load this plugin's task(s).
+	grunt.loadTasks('tasks');
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+	// These plugins provide necessary tasks.
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-  // Whenever the "test" task is run, first clean and restore the fixtures,
-  // then run this plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'restore', 'bump', 'nodeunit']);
+	// Whenever the "test" task is run, first clean and restore the fixtures,
+	// then run this plugin's task(s), then test the result.
+	grunt.registerTask('test', ['clean', 'restore', 'bump', 'nodeunit']);
 
-  // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+	// By default, lint and run all tests.
+	grunt.registerTask('default', ['jshint', 'test']);
 
-  grunt.registerMultiTask('restore', 'Restore fixtures', function(){
-    this.files.forEach( function(f){
-      grunt.file.copy( f.src, f.dest );
-    });
-  });
+	grunt.registerMultiTask('restore', 'Restore fixtures', function(){
+		this.files.forEach( function(f){
+			grunt.file.copy( f.src, f.dest );
+		});
+	});
 };

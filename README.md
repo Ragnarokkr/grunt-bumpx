@@ -26,7 +26,7 @@ which ensures that it will be installed whenever the `npm install` command
 is run.
 
 [grunt]: http://gruntjs.com/
-[Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
+[Getting Started]: http://gruntjs.com/getting-started
 [package.json]: https://npmjs.org/doc/json.html
 
 ## The "bump" task
@@ -88,12 +88,34 @@ Default value: `build`
 It indicates which part of the version number to bump. Allowed values are:
 `major`, `minor`, `patch`, and `build` (case insensitive).
 
+#### options.tabSize
+Type: `Number`
+Default value: `4`
+
+It indicates how many spaces to be used to indent the target JSON file.
+
+#### options.onBumped
+Type: `Function`
+Default value: `function( data ){}`
+
+It allows to define a callback function to be invoked after each version is
+bumped into a target file. The callback will be invoked with an object 
+parameter containing:
+
+* **grunt**: the [`grunt`][grunt-object] object,
+* **task**: the [task][] object,
+* **index**: the index of the currently processed file inside the files array,
+* **version**: the new version.
+
+[grunt-object]: http://gruntjs.com/api/grunt#grunt.initconfig
+[task]: http://gruntjs.com/inside-tasks
+
 ### Usage Examples
 
 #### Default Options
 In this example the default options are used. Running the task in this way,
 the `version` field of each source file will be automatically bumped to the
-next build release.
+next build release, using an indentation of 4 spaces.
 
 ```js
 grunt.initConfig({
@@ -123,13 +145,26 @@ bump.
 
 #### Custom Options
 In this example, custom options are used. Running the task in this way, the
-`version` field of each source file will be bumped to the next minor release.
+`version` field of each source file will be bumped to the next minor release
+using an indentation of 2 spaces, then the callback function is invoked after
+each file has been bumped. Inside the callback function it's possibile to see
+how the passed data parameter is used to retrieve useful informations to take
+decisions on what to do. (In this example, we presume a `pkg` and `manifest`
+which are updated in their `version` field, according to the processed index.)
 
 ```js
 grunt.initConfig({
   bump: {
     options: {
-      part: 'minor'
+      part: 'minor',
+      tabSize: 2,
+      onBumped: function( data ) {
+        if ( data.index === 0 ) {
+            grunt.config( 'pkg.version', data.version );
+        } else {
+            grunt.config( 'manifest.version', data.version );
+        }
+      }
     },
     files: [ 'package.json', 'manifest.json' ]
   }
