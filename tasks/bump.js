@@ -18,6 +18,7 @@ module.exports = function( grunt ) {
 		var options = this.options({
 					part: part || 'build',
 					tabSize: 4,
+					hardTab: false,
 					onBumped: function( /* data */ ){}
 				}),
 				rePart = /^(major|minor|patch|build)$/i;
@@ -28,11 +29,12 @@ module.exports = function( grunt ) {
 				try {
 					var f = grunt.file.readJSON( filepath ),
 							oldVer = f.version,
-							newVer = semver.inc( oldVer, options.part );
+							newVer = semver.inc( oldVer, options.part ),
+							spacer = options.hardTab ? '\t' : options.tabSize;
 
 					if ( newVer ) {
 						f.version = newVer;
-						grunt.file.write( filepath, JSON.stringify( f, null, options.tabSize ) );
+						grunt.file.write( filepath, JSON.stringify( f, null, spacer ) );
 						grunt.log.writeln( oldVer + ' -> ' + newVer );
 						options.onBumped({
 							grunt: grunt,

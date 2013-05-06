@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.1.3 (2013.05.06)
+
+- Added support for soft and hard tabs
+
 ### 0.1.2 (2013.05.05)
 
 - Updated the dependencies

@@ -49,6 +49,7 @@ module.exports = function(grunt) {
 				options: {
 					part: 'minor',
 					tabSize: 2,
+					hardTab: true,
 					onBumped: function( data ) {
 						var file = data.task.filesSrc[data.index],
 							json = grunt.file.readJSON( file );

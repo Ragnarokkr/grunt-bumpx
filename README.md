@@ -92,7 +92,16 @@ It indicates which part of the version number to bump. Allowed values are:
 Type: `Number`
 Default value: `4`
 
-It indicates how many spaces to be used to indent the target JSON file.
+It indicates how many spaces (soft tab) to be used to indent the targeted JSON
+file.
+
+#### options.hardTab
+Type: `Boolean`
+Default value: `false`
+
+It indicates whether hard tabs (`\t`) have to be used instead of soft tabs.
+This option has priority over `options.tabSize`. (If both options are defined
+and `hardTab` is set to `true`, then hard tabs will be used.)
 
 #### options.onBumped
 Type: `Function`
@@ -103,7 +112,7 @@ bumped into a target file. The callback will be invoked with an object
 parameter containing:
 
 * **grunt**: the [`grunt`][grunt-object] object,
-* **task**: the [task][] object,
+* **task**: the [`task`][] object,
 * **index**: the index of the currently processed file inside the files array,
 * **version**: the new version.
 

@@ -1,7 +1,7 @@
 {
 	"name": "grunt-bumpx",
-	"description": "Extended Bump version number",
-	"version": "0.1.2",
+	"description": "Extended bump version number",
+	"version": "0.1.3",
 	"homepage": "https://github.com/Ragnarokkr/grunt-bump",
 	"author": {
 		"name": "Marco Trulla",
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/Ragnarokkr/grunt-bump.git"
+		"url": "https://github.com/Ragnarokkr/grunt-bump.git"
 	},
 	"bugs": {
 		"url": "https://github.com/Ragnarokkr/grunt-bump/issues"
@@ -23,7 +23,7 @@
 	],
 	"main": "Gruntfile.js",
 	"engines": {
-		"node": ">= 0.8.0"
+		"node": ">=0.8.0"
 	},
 	"scripts": {
 		"test": "grunt test"
