@@ -12,6 +12,8 @@ module.exports = function(grunt) {
 
 	// Project configuration.
 	grunt.initConfig({
+		// Meta
+		pkg: grunt.file.readJSON('package.json'),
 		// Tasks configuration
 		jshint: {
 			all: [
@@ -60,6 +62,19 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// Markdown compiler
+		markdown: {
+			all: {
+				options: {
+					gfm: true,
+					highlight: 'manual'
+				},
+				files: ['./*.md'],
+				dest: './md',
+				template: 'template.jst'
+			}
+		},
+
 		// Unit tests.
 		nodeunit: {
 			tests: ['test/*_test.js'],
@@ -71,9 +86,11 @@ module.exports = function(grunt) {
 	grunt.loadTasks('tasks');
 
 	// These plugins provide necessary tasks.
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-nodeunit');
+	Object.keys( grunt.config('pkg').devDependencies ).forEach( function(dep){
+		if (/^grunt\-/i.test(dep)) {
+			grunt.loadNpmTasks( dep );
+		} // if
+	});
 
 	// Whenever the "test" task is run, first clean and restore the fixtures,
 	// then run this plugin's task(s), then test the result.
