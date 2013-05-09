@@ -1,19 +1,21 @@
-# CHANGELOG
+## 0.1.4 / 2013-05-09
 
-### 0.1.3 (2013.05.06)
+* [BUGFIX] Fix a bug which prevents the part manually forced via command line to be used
 
-- Added support for soft and hard tabs
+## 0.1.3 / 2013-05-06
 
-### 0.1.2 (2013.05.05)
+* [ENHANCEMENT] Added support for soft and hard tabs
 
-- Updated the dependencies
-- Reviewed the configuration files
-- Added support for custom indentation and onBumped callback (see Issue #2) 
+## 0.1.2 / 2013-05-05
 
-### 0.1.1 (2013.03.24)
+* [ENHANCEMENT] Updated the dependencies
+* [ENHANCEMENT] Reviewed the configuration files
+* [FEATURE] Added support for custom indentation and onBumped callback (see Issue #2) 
 
-- Updated to support the new Grunt v0.4
+## 0.1.1 / 2013-03-24
 
-### 0.1.0 (2013.01.15)
+* [ENHANCEMENT] Updated to support the new Grunt v0.4
 
-- Initial commit
+## 0.1.0 / 2013-01-15
+
+* Initial commit

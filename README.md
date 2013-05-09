@@ -1,6 +1,5 @@
-# grunt-bumpx
-
-> Bump version number (extended)
+# grunt-bumpx - Extended bump version number
+[![Dependency Status](https://gemnasium.com/Ragnarokkr/grunt-bump.png)](https://gemnasium.com/Ragnarokkr/grunt-bump)
 
 ## Getting Started
 _If you haven't used [grunt][] before, be sure to check out the
@@ -25,10 +24,6 @@ addition, the plugin should be listed in package.json as a `devDependency`,
 which ensures that it will be installed whenever the `npm install` command
 is run.
 
-[grunt]: http://gruntjs.com/
-[Getting Started]: http://gruntjs.com/getting-started
-[package.json]: https://npmjs.org/doc/json.html
-
 ## The "bump" task
 
 ### Overview
@@ -37,87 +32,63 @@ passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  bump: {
-    options: {
-      // Task-specific options go here.
-    },
-    files: {
-      // Target-specific file lists and/or options go here.
+    bump: {
+        options: {
+          // Task-specific options go here.
+        },
+        files: {
+          // Target-specific file lists and/or options go here.
+        }
     }
-  }
 })
 
 // or, by task-specific:
 
 grunt.initConfig({
-  bump: {
-    foo: {
-      options: {
-        // Task-specific options go here.
-      },
-      src: [
-        // Target-specific file lists.
-      ]
-    },
-    bar: {
-      options: {
-        // Task-specific options go here.
-      },
-      src: [
-        // Target-specific file lists.
-      ]
+    bump: {
+        foo: {
+            options: {
+                // Task-specific options go here.
+            },
+            src: [
+                // Target-specific file lists.
+            ]
+        },
+        bar: {
+            options: {
+                // Task-specific options go here.
+            },
+            src: [
+                // Target-specific file lists.
+            ]
+        }
     }
-  }
 })
 ```
 
-This task allows to bump the version number into the configuration files
-(package.json, manifest.json, etc.) of your project.
+This task allows to bump the version number of the configuration files
+(package.json, manifest.json, etc.) in your project.
 
 Only JSON files are supported, and each file **must** have a `version` field
-conforming to the [SemVer][] guidelines.
-
-[SemVer]: http://semver.org/
+compliant to [SemVer][] guidelines.
 
 ### Options
 
-#### options.part
-Type: `String`
-Default value: `build`
+Option | Type | Default | Description
+---|:---:|:---:|---
+part | `String` | `build` | Indicates which part of the version number to bump. Allowed values are: `major`, `minor`, `patch`, and `build` (case insensitive).
+tabSize | `Number` | `4` | Indicates how many spaces (soft tab) to be used to indent the targeted JSON file.
+hardTab | `Boolean` | `false` | Indicates whether hard tabs (`\t`) have to be used instead of soft tabs. This option has priority over `options.tabSize`. (If both options are defined and `hardTab` is set to `true`, then hard tabs will be used.)
+onBumped | `Function` | `function( data ){}` | Allows to define a callback function to be invoked after each version is bumped into a target file.
 
-It indicates which part of the version number to bump. Allowed values are:
-`major`, `minor`, `patch`, and `build` (case insensitive).
+The callback will be invoked with an object parameter containing:
 
-#### options.tabSize
-Type: `Number`
-Default value: `4`
-
-It indicates how many spaces (soft tab) to be used to indent the targeted JSON
-file.
-
-#### options.hardTab
-Type: `Boolean`
-Default value: `false`
-
-It indicates whether hard tabs (`\t`) have to be used instead of soft tabs.
-This option has priority over `options.tabSize`. (If both options are defined
-and `hardTab` is set to `true`, then hard tabs will be used.)
-
-#### options.onBumped
-Type: `Function`
-Default value: `function( data ){}`
-
-It allows to define a callback function to be invoked after each version is
-bumped into a target file. The callback will be invoked with an object 
-parameter containing:
-
-* **grunt**: the [`grunt`][grunt-object] object,
-* **task**: the [`task`][] object,
-* **index**: the index of the currently processed file inside the files array,
-* **version**: the new version.
-
-[grunt-object]: http://gruntjs.com/api/grunt#grunt.initconfig
-[task]: http://gruntjs.com/inside-tasks
+Arg | Type | Description
+---|:---:|---
+grunt | `Object` | the [`grunt`][grunt-object] object
+task | `Object` | the [`task`][task] object
+index | `Number` | the index of the currently processed file inside the files array
+version | `String` | the new version.
 
 ### Usage Examples
 
@@ -128,10 +99,10 @@ next build release, using an indentation of 4 spaces.
 
 ```js
 grunt.initConfig({
-  bump: {
-    options: {},
-    files: [ 'package.json', 'manifest.json' ]
-  }
+    bump: {
+        options: {},
+        files: [ 'package.json', 'manifest.json' ]
+    }
 })
 ```
 
@@ -163,30 +134,49 @@ which are updated in their `version` field, according to the processed index.)
 
 ```js
 grunt.initConfig({
-  bump: {
-    options: {
-      part: 'minor',
-      tabSize: 2,
-      onBumped: function( data ) {
-        if ( data.index === 0 ) {
-            grunt.config( 'pkg.version', data.version );
-        } else {
-            grunt.config( 'manifest.version', data.version );
-        }
-      }
-    },
-    files: [ 'package.json', 'manifest.json' ]
-  }
+    bump: {
+        options: {
+            part: 'minor',
+            tabSize: 2,
+            onBumped: function( data ) {
+                if ( data.index === 0 ) {
+                    grunt.config( 'pkg.version', data.version );
+                } else {
+                    grunt.config( 'manifest.version', data.version );
+                }
+            }
+        },
+        files: [ 'package.json', 'manifest.json' ]
+    }
 })
 ```
 
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style.
+## Contributing (a.k.a. fork/clone/edit/pull request)
+If you're interested in contributing to this project, take care to maintain the
+existing coding style.
+
+The project follows these standard, so please you do it too:
+
+* [SemVer][] for version numbers
+* [Vandamme][] for changelog formatting
+* [EditorConfig][] for cross-editor configuration
+
 Add unit tests for any new or changed functionality. Lint and test your code
 using [grunt][].
 
 ## Release History
-See the file CHANGELOG.md distributed with the project.
+See the file [CHANGELOG.md][changelog] distributed with the project.
 
 ## License
-See the file LICENSE-MIT distributed with the project.
+See the file [LICENSE-MIT][license] distributed with the project.
+
+[grunt]: http://gruntjs.com/
+[Getting Started]: http://gruntjs.com/getting-started
+[package.json]: https://npmjs.org/doc/json.html
+[SemVer]: http://semver.org/
+[grunt-object]: http://gruntjs.com/api/grunt#grunt.initconfig
+[task]: http://gruntjs.com/inside-tasks
+[Vandamme]: https://github.com/tech-angels/vandamme
+[EditorConfig]: http://editorconfig.org/
+[changelog]: CHANGELOG.md
+[license]: LICENSE-MIT
