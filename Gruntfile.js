@@ -1,6 +1,6 @@
 /*
- * grunt-bump
- * https://github.com/Ragnarokkr/grunt-bump
+ * grunt-bumpx
+ * https://github.com/Ragnarokkr/grunt-bumpx
  *
  * Copyright (c) 2013 Marco Trulla
  * Licensed under the MIT license.
@@ -14,22 +14,27 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		// Meta
 		pkg: grunt.file.readJSON('package.json'),
+
 		// Tasks configuration
 		jshint: {
 			all: [
 				'Gruntfile.js',
 				'tasks/*.js',
 				'<%= nodeunit.tests %>',
+				'package.json'
 			],
 			options: {
-				jshintrc: '.jshintrc',
-			},
+				jshintrc: '.jshintrc'
+			}
 		},
 
+		// Remove temporanoeous test files and old documentation
 		clean: {
-			files: [ 'test/fixtures/*_options.json' ]
+			test: [ 'test/fixtures/*_options.json' ],
+			doc: [ './README.md' ]
 		},
 
+		// Restore test files
 		restore: {
 			default_options: {
 				src: 'test/fixtures/ref_package.json',
@@ -39,6 +44,31 @@ module.exports = function(grunt) {
 				src: 'test/fixtures/ref_package.json',
 				dest: 'test/fixtures/custom_options.json'
 			}
+		},
+
+		sildoc: {
+			doc: (function(){
+				if ( grunt.option('deploy') ) {
+					return {
+						options: {
+							data: {
+								name: '<%= pkg.name %>',
+								altName: '<%= pkg.name.match(/^(.*).$/)[1] %>',
+								description: '<%= pkg.description %>',
+								gruntVersion: '<%= pkg.devDependencies.grunt %>',
+								gemnasium: {
+									userId: 'Ragnarokkr'
+								}
+							},
+							template: './src-doc/readme.md.jst'
+						},
+						src: [ './src-doc/_*.md.jst' ],
+						dest: './README.md'
+					};
+				} else {
+					return {};
+				}
+			}())
 		},
 
 		// Configuration to be run (and then tested).
@@ -59,25 +89,25 @@ module.exports = function(grunt) {
 					}
 				},
 				src: ['<%= restore.custom_options.dest %>']
-			}
-		},
-
-		// Markdown compiler
-		markdown: {
-			all: {
-				options: {
-					gfm: true,
-					highlight: 'manual'
-				},
-				files: ['./*.md'],
-				dest: './md',
-				template: 'template.jst'
-			}
+			},
+			deploy: (function(){
+				if ( grunt.option( 'deploy' ) ) {
+					return {
+						options: {
+							part: 'patch',
+							hardTab: true
+						},
+						src: [ 'package.json' ]
+					};
+				} else {
+					return {};
+				} // if..else
+			}())
 		},
 
 		// Unit tests.
 		nodeunit: {
-			tests: ['test/*_test.js'],
+			tests: ['test/*_test.js']
 		}
 
 	});
@@ -86,11 +116,7 @@ module.exports = function(grunt) {
 	grunt.loadTasks('tasks');
 
 	// These plugins provide necessary tasks.
-	Object.keys( grunt.config('pkg').devDependencies ).forEach( function(dep){
-		if (/^grunt\-/i.test(dep)) {
-			grunt.loadNpmTasks( dep );
-		} // if
-	});
+	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
 	// Whenever the "test" task is run, first clean and restore the fixtures,
 	// then run this plugin's task(s), then test the result.
