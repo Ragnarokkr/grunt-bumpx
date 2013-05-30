@@ -1,6 +1,6 @@
 /*
- * grunt-bump
- * https://github.com/Ragnarokkr/grunt-bump
+ * grunt-bumpx
+ * https://github.com/Ragnarokkr/grunt-bumpx
  *
  * Copyright (c) 2013 Marco Trulla
  * Licensed under the MIT license.
@@ -16,29 +16,34 @@ module.exports = function( grunt ) {
 	// be set to `build` by default.
 	grunt.registerMultiTask( 'bump', 'Bump package version.', function( part ){
 		var options = this.options({
-				part: 'build',
-				tabSize: 4,
-				hardTab: false,
-				onBumped: function( /* data */ ){}
-			}),
-			rePart = /^(major|minor|patch|build)$/i,
-			partToBump = part || options.part;
+			part: 'build',
+			tabSize: 4,
+			hardTab: false,
+			onBumped: function( /* data */ ){}
+		}),
+		rePart = /^(major|minor|patch|build)$/i,
+		partToBump = part || options.part;
 
 		if ( rePart.test( partToBump ) ) {
 			this.filesSrc.forEach( function(filepath, i){
-				grunt.log.write( 'Bumping "' + filepath + '" for ' + partToBump + '...' );
+				grunt.verbose.writeln( 'Bumping "' + filepath + '" for "' + partToBump + '"...' );
 				try {
 					// Read the target file
 					var f = grunt.file.readJSON( filepath ),
-						oldVer = f.version,
-						newVer = semver.inc( oldVer, partToBump ),
-						spacer = options.hardTab ? '\t' : options.tabSize;
+					// Bump the version number
+					oldVer = f.version,
+					newVer = semver.inc( oldVer, partToBump ),
+					// Figure out the indenting character to be used
+					spacer = options.hardTab ? '\t' : options.tabSize;
 
 					// If a valid SemVer value was found then is bumped
 					if ( newVer ) {
+						// Write the bumped version with target formatting
 						f.version = newVer;
 						grunt.file.write( filepath, JSON.stringify( f, null, spacer ) );
-						grunt.log.writeln( oldVer + ' -> ' + newVer );
+						grunt.log.writeln( 'File "' + filepath + '" bumped from "' + oldVer +
+							'" to "' + newVer + '"' );
+						// Invoke the callback function once the version is bumped
 						options.onBumped({
 							grunt: grunt,
 							task: this,
@@ -47,7 +52,7 @@ module.exports = function( grunt ) {
 						});
 					} // if
 				} catch (e) {
-					grunt.log.writeln();
+					grunt.verbose.error();
 					grunt.verbose.error(e);
 					grunt.fail.warn('Bump operation failed.');
 				} // try..catch
