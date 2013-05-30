@@ -1,0 +1,19 @@
+## The "<%= meta.altName.replace(/^grunt\-/,'') %>" task
+
+### Overview
+In your project's Gruntfile, add a section named `<%= meta.altName.replace(/^grunt\-/,'') %>` to the data object passed into `grunt.initConfig()`.
+
+```javascript
+grunt.initConfig({
+    <%= meta.altName.replace(/grunt\-/,'') %>: {
+        options: {
+            // Task-specific options go here.
+        },
+        your_target: {
+            // Target-specific file lists and/or options go here.
+        }
+    }
+})
+```
+
+**<%= meta.name.replace(/^grunt\-/,'') %>** allows to bump the version number of the configuration files (package.json, manifest.json, etc.) in your project. Only JSON files are supported, and each file **must** have a `version` field compliant to [SemVer][] guidelines.

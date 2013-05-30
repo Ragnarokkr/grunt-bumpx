@@ -1,0 +1,4 @@
+<% if (meta['name']) { %># <%= meta.name %><% } %><% if (meta['gemnasium']) { %> [![Dependency Status](https://gemnasium.com/<%= meta.gemnasium.userId %>/<%= meta.name %>.png)](https://gemnasium.com/<%= meta.gemnasium.userId %>/<%= meta.name %>) <% } %>
+<% if (meta['description']) { %>
+> <%= meta.description %>
+<% } %>
