@@ -1,2 +1,7 @@
-/node_modules/
-/md/
+node_modules
+test
+src-doc
+
+.*
+
+grunt-bumpx.sublime-*

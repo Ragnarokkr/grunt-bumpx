@@ -17,7 +17,3 @@ node_modules
 
 # SublimeText project files
 *.sublime-workspace
-*.sublime-project
-
-# Project files
-md
