@@ -10,7 +10,20 @@
 
 module.exports = function( grunt ) {
 
-	var semver = require( 'semver' );
+	var semver = require( 'semver');
+
+	/**
+	 * Added by scriptwerx
+	 * @param p_version
+	 */
+
+	function getVersionData (p_version) {
+		var versionData = p_version.split (".");
+		var split = versionData.pop ().split ("-");
+		versionData.push (split[0]);
+		versionData.push (split[1]);
+		return versionData;
+	}
 
 	// If the task is executed without argument, the value of `part` will
 	// be set to `build` by default.
@@ -19,6 +32,7 @@ module.exports = function( grunt ) {
 			part: 'build',
 			tabSize: 4,
 			hardTab: false,
+			persistBuild: false, // Added by scriptwerx
 			onBumped: function( /* data */ ){}
 		}),
 		rePart = /^(major|minor|patch|build)$/i,
@@ -35,6 +49,15 @@ module.exports = function( grunt ) {
 					newVer = semver.inc( oldVer, partToBump ),
 					// Figure out the indenting character to be used
 					spacer = options.hardTab ? '\t' : options.tabSize;
+
+					// Added by scriptwerx
+					if (options.persistBuild && options.part !== "build") {
+						var build = getVersionData (oldVer)[3],
+							tmpVer = getVersionData (newVer);
+							tmpVer.pop ();
+
+						newVer = tmpVer.join (".") + "-" + (parseInt (build, 10) + 1);
+					}
 
 					// If a valid SemVer value was found then is bumped
 					if ( newVer ) {

@@ -44,6 +44,7 @@ grunt.initConfig({
 options.* | Type | Default | Description
 ---|:---:|:---:|---
 part|`String`|`'build'`|the part of version number to bump. Allowed values are: `major`, `minor`, `patch`, and `build` (case insensitive).
+persistBuild|`Boolean`|`false`|option to persist and increment the build number when bumping `major`, `minor` or `patch`.
 tabSize|`Number`|`4`|number of spaces (soft tab) to be used to indent the targeted JSON file.
 hardTab|`Boolean`|`false`|whether hard tabs (`\t`) have to be used instead of soft tabs. This option has priority over `options.tabSize`. (If both options are defined and `hardTab` is set to `true`, then hard tabs will be used.)
 onBumped|`Function`|`function( data ){}`|callback function to be invoked after each bumped version (called for each target).
