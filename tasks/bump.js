@@ -51,11 +51,12 @@ module.exports = function( grunt ) {
 					spacer = options.hardTab ? '\t' : options.tabSize;
 
 					// Added by scriptwerx
-					if (options.persistBuild) {
+					if (options.persistBuild && options.part !== "build") {
 						var build = getVersionData (oldVer)[3],
 							tmpVer = getVersionData (newVer);
 							tmpVer.pop ();
-						if (options.part !== "build") newVer = tmpVer.join (".") + "-" + (parseInt (build, 10) + 1);
+
+						newVer = tmpVer.join (".") + "-" + (parseInt (build, 10) + 1);
 					}
 
 					// If a valid SemVer value was found then is bumped
