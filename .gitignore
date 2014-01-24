@@ -1,4 +1,12 @@
-# Node.js
+###Linux###
+
+.*
+!.gitignore
+*~
+
+
+###Node###
+
 lib-cov
 *.seed
 *.log
@@ -15,5 +23,12 @@ results
 npm-debug.log
 node_modules
 
+###SublimeText###
+
 # SublimeText project files
-*.sublime-workspace
+*.sublime-*
+
+###Project###
+!.editorconfig
+!.jshintrc
+!.npmignore

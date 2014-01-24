@@ -1,6 +1,6 @@
 ## Contributing
 
-Any contribution to improve the project and/or expand it is welcome.
+Any [contribution][contribution] to improve the project and/or expand it is welcome.
 
 If you're interested in contributing to this project, take care to maintain the existing coding style.
 

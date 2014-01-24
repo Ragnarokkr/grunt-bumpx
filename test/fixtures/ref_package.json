@@ -1,43 +1,51 @@
 {
-  "name": "grunt-bump",
-  "description": "Bump package version",
+  "name": "grunt-bumpx",
+  "description": "Extended bump version number",
   "version": "0.1.0",
-  "homepage": "https://github.com/Ragnarokkr/grunt-bump",
+  "homepage": "https://github.com/Ragnarokkr/grunt-bumpx",
   "author": {
     "name": "Marco Trulla",
-    "email": "marco@marcotrulla.it",
-    "url": "http://marcotrulla.it"
+    "email": "developing@marcotrulla.it",
+    "url": "http://marcotrulla.it/"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Ragnarokkr/grunt-bump.git"
+    "url": "git://github.com/Ragnarokkr/grunt-bumpx.git"
   },
   "bugs": {
-    "url": "https://github.com/Ragnarokkr/grunt-bump/issues"
+    "url": "https://github.com/Ragnarokkr/grunt-bumpx/issues"
   },
   "licenses": [
     {
-      "type": "MIT",
-      "url": "https://github.com/Ragnarokkr/grunt-bump/blob/master/LICENSE-MIT"
+      "type": "ISC",
+      "url": "https://github.com/Ragnarokkr/grunt-bumpx/blob/master/LICENSE-ISC"
     }
   ],
   "main": "Gruntfile.js",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
     "test": "grunt test"
   },
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.1.1rc5",
-    "grunt-contrib-clean": "~0.4.0rc5",
-    "grunt-contrib-nodeunit": "~0.1.2rc5",
-    "grunt": "~0.4.0rc5"
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-nodeunit": "~0.2.2",
+    "grunt": "~0.4.2",
+    "grunt-sildoc": "~0.1.1"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "bump",
+    "package",
+    "version",
+    "number"
   ],
   "dependencies": {
-    "semver": "~1.1.2"
+    "semver": "~2.2.1"
   }
 }

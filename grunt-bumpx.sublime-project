@@ -2,7 +2,8 @@
 	"folders":
 	[
 		{
-			"path": "/home/marco/progetti/plugins/grunt/grunt-bumpx"
+			"follow_symlinks": true,
+			"path": "."
 		}
 	]
 }

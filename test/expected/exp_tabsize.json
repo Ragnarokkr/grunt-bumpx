@@ -1,0 +1,51 @@
+{
+        "name": "grunt-bumpx",
+        "description": "Extended bump version number",
+        "version": "0.1.1",
+        "homepage": "https://github.com/Ragnarokkr/grunt-bumpx",
+        "author": {
+                "name": "Marco Trulla",
+                "email": "developing@marcotrulla.it",
+                "url": "http://marcotrulla.it/"
+        },
+        "repository": {
+                "type": "git",
+                "url": "git://github.com/Ragnarokkr/grunt-bumpx.git"
+        },
+        "bugs": {
+                "url": "https://github.com/Ragnarokkr/grunt-bumpx/issues"
+        },
+        "licenses": [
+                {
+                        "type": "ISC",
+                        "url": "https://github.com/Ragnarokkr/grunt-bumpx/blob/master/LICENSE-ISC"
+                }
+        ],
+        "main": "Gruntfile.js",
+        "engines": {
+                "node": ">= 0.10.0"
+        },
+        "scripts": {
+                "test": "grunt test"
+        },
+        "peerDependencies": {
+                "grunt": "~0.4.2"
+        },
+        "devDependencies": {
+                "grunt-contrib-jshint": "~0.8.0",
+                "grunt-contrib-clean": "~0.5.0",
+                "grunt-contrib-nodeunit": "~0.2.2",
+                "grunt": "~0.4.2",
+                "grunt-sildoc": "~0.1.1"
+        },
+        "keywords": [
+                "gruntplugin",
+                "bump",
+                "package",
+                "version",
+                "number"
+        ],
+        "dependencies": {
+                "semver": "~2.2.1"
+        }
+}

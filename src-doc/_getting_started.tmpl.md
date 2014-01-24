@@ -10,5 +10,5 @@ npm install <%= meta.name %> --save-dev
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```javascript
-grunt.loadNpmTasks('<%= meta.name %>');
+grunt.loadNpmTasks( '<%= meta.name %>' );
 ```

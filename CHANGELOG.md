@@ -1,3 +1,20 @@
+## 0.2.0 / 2014-01-25
+
+* [ENHANCEMENT] Full code refactory
+* [ENHANCEMENT] Fully SemVer 2.0 compliant
+* [ENHANCEMENT] Switched to standard command line options
+* [ENHANCEMENT] Added support for queue in modifiers and event's callbacks.
+* [ENHANCEMENT] Updated dependencies, documentation, configuration files, and requirements
+* [ENHANCEMENT] Updated and extended the coverage for test files
+* [FEATURE] Added support for custom modifiers in versioning
+
+## 0.1.5 / 2013-05-30
+
+* [ENHANCEMENT] Updated the dependencies
+* [ENHANCEMENT] Updated the documentation
+* [ENHANCEMENT] Updated the configuration files
+* [BUGFIX] Minor changes
+
 ## 0.1.4 / 2013-05-09
 
 * [BUGFIX] Fix a bug which prevents the part manually forced via command line to be used
