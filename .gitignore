@@ -2,6 +2,9 @@
 
 .*
 !.gitignore
+!.editorconfig
+!.jshintrc
+!.npmignore
 *~
 
 
@@ -26,9 +29,4 @@ node_modules
 ###SublimeText###
 
 # SublimeText project files
-*.sublime-*
-
-###Project###
-!.editorconfig
-!.jshintrc
-!.npmignore
+grunt-bumpx.sublime-*

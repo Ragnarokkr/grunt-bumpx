@@ -4,8 +4,8 @@
 [badge-grunt-url]: http://gruntjs.com/
 [badge-npm-image]: https://nodei.co/npm/grunt-bumpx.png?downloads=true
 [badge-npm-url]: https://npmjs.org/package/grunt-bumpx
-[badge-gemnasium-image]: https://gemnasium.com/ragnarokkr/grunt-bumpx.png
-[badge-gemnasium-url]: https://gemnasium.com/ragnarokkr/grunt-bumpx
+[badge-gemnasium-image]: https://gemnasium.com/Ragnarokkr/grunt-bumpx.png
+[badge-gemnasium-url]: https://gemnasium.com/Ragnarokkr/grunt-bumpx
 [badge-dependencies-image]: https://david-dm.org/ragnarokkr/grunt-bumpx.png
 [badge-dependencies-url]: https://david-dm.org/ragnarokkr/grunt-bumpx
 [badge-dev-dependencies-image]: https://david-dm.org/ragnarokkr/grunt-bumpx/dev-status.png
@@ -20,7 +20,8 @@
 [badge-gittip-url]: https://www.gittip.com/Ragnarokkr/
 [badge-flattr-image]: https://api.flattr.com/button/flattr-badge-large.png
 [badge-flattr-url]: https://flattr.com/submit/auto?user_id=marcotrulla&url=https%3A%2F%2Fgithub.com%2FRagnarokkr%2Fgrunt-bumpx
-[badge-bitcoin-image]: http://static.marcotrulla.it/images/badges/bitcoin-badge-73x20.png
+[badge-open-source-image]: http://www.iloveopensource.io/images/logo-lightbg.png
+[badge-open-source-url]: http://www.iloveopensource.io/users/Ragnarokkr
 [badge-endorse-image]: https://api.coderwall.com/ragnarokkr/endorsecount.png
 [badge-endorse-url]: https://coderwall.com/ragnarokkr
 
