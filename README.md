@@ -9,7 +9,7 @@
 [![Bitdeli Badge][badge-bitdeli-image]][badge-bitdeli-url] [![xrefs][badge-sourcegraph-image]][badge-sourcegraph-url] [![Stories in Ready][badge-waffle-image]][badge-waffle-url] [![endorse][badge-endorse-image]][badge-endorse-url]
 
 ## Getting Started
-This plugin requires Grunt `~0.4.2`
+This plugin requires Grunt `^0.4.5`
 
 If you haven't used [Grunt][grunt] before, be sure to check out the [Getting Started][getting-started] guide, as it explains how to create a [Gruntfile][] as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -107,7 +107,7 @@ Running the task in this way, each source file's `patch` level of the `version` 
 grunt.initConfig({
   bump: {
     options: {},
-    files: [ 'package.json', 'manifest.json' ]
+    src: [ 'package.json', 'manifest.json' ]
   }
 })
 ```
@@ -122,7 +122,7 @@ grunt.initConfig({
       level: 'minor',
       tabSize: 3
     },
-    files: [ 'package.json', 'manifest.json' ]
+    src: [ 'package.json', 'manifest.json' ]
   }
 })
 ```
@@ -148,7 +148,7 @@ grunt.initConfig({
         }
       }
     },
-    files: [ 'package.json', 'manifest.json' ]
+    src: [ 'package.json', 'manifest.json' ]
   }
 })
 ```

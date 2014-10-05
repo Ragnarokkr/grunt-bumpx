@@ -7,7 +7,7 @@ Running the task in this way, each source file's `patch` level of the `version` 
 grunt.initConfig({
   <%= meta.altName %>: {
     options: {},
-    files: [ 'package.json', 'manifest.json' ]
+    src: [ 'package.json', 'manifest.json' ]
   }
 })
 ```
@@ -22,7 +22,7 @@ grunt.initConfig({
       level: 'minor',
       tabSize: 3
     },
-    files: [ 'package.json', 'manifest.json' ]
+    src: [ 'package.json', 'manifest.json' ]
   }
 })
 ```
@@ -48,7 +48,7 @@ grunt.initConfig({
         }
       }
     },
-    files: [ 'package.json', 'manifest.json' ]
+    src: [ 'package.json', 'manifest.json' ]
   }
 })
 ```

@@ -1,3 +1,7 @@
+## 0.2.1 / 2014-10-05
+
+* [ENHANCEMENT] Updated dependencies and configuration files.
+
 ## 0.2.0 / 2014-01-25
 
 * [ENHANCEMENT] Full code refactory
